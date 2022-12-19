@@ -1,24 +1,7 @@
 # heap sort
 input_list = [1.2, 0.22, 0.43, 0.36, 0.39, 0.27]
 
-test=[0.22, 0.36, 0.39, 0.27]
-def Qsort(mass):
-    if len(mass) <= 1:
-        return mass
-    else:
-        pillar = mass[0]
-        SmallerThanPillar = []
-        EqualPillar = []
-        BiggerThanPillar = []
-        for el in mass:
-            if el < pillar:
-                SmallerThanPillar.append(el)
-            elif el > pillar:
-                BiggerThanPillar.append(el)
-            else:
-                EqualPillar.append(el)
-        return Qsort(SmallerThanPillar) + EqualPillar + Qsort(BiggerThanPillar)
-
+test = [0.22, 0.36, 0.39, 0.27]
 
 
 def insertion_sort(bucket):
@@ -51,7 +34,7 @@ def bucket_sort(input_list):
 
     # Сортируем элементы внутри блоков с помощью сортировки вставкой
     for z in range(len(input_list)):
-        Qsort(buckets_list[z])
+        insertion_sort(buckets_list[z])
 
     # Объединяем блоки с отсортированными элементами в один список
     final_output = []
@@ -60,5 +43,4 @@ def bucket_sort(input_list):
     return final_output
 
 
-print(type(insertion_sort(test)))
-print(type(Qsort(test)))
+print(bucket_sort(input_list))
